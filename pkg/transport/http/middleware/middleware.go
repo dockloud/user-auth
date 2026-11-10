@@ -14,7 +14,7 @@ func UserAuthMiddleware(verifier *verifier.Verifier) func(http.Handler) http.Han
 	return func(next http.Handler) http.Handler {
 		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 			path := r.URL.Path
-			if strings.HasSuffix(path, "/auth") || strings.HasSuffix(path, "/register") {
+			if strings.HasSuffix(path, "/auth") || strings.HasSuffix(path, "/login") {
 				next.ServeHTTP(w, r)
 				return
 			}
